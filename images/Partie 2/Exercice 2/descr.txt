@@ -1,0 +1,29 @@
+Utilisation de curl (1).
+
+Utilisation de netcat (2).
+
+example.com supporte-t-il le protocole HTTP/1.0 ?
+    > Oui il supporte HTTP/1.0
+
+    HTTP/1.0 200 OK
+    Age: 207593
+    Cache-Control: max-age=604800
+    Content-Type: text/html; charset=UTF-8
+    Date: Sat, 29 Feb 2020 23:25:56 GMT
+    Etag: "3147526947+ident"
+    Expires: Sat, 07 Mar 2020 23:25:56 GMT
+    Last-Modified: Thu, 17 Oct 2019 07:18:26 GMT
+    Server: ECS (bsa/EB15)
+    Vary: Accept-Encoding
+    X-Cache: HIT
+    Content-Length: 1256
+    Connection: close
+
+quel est l'encodage utilisé pour le type de retour ?
+    > Il semblerait qu'il n'y ai pas d'encodage au vu de l'absence de "Content-Encoding".
+
+que se passe-t-il si vous ajoutez "Accept-Encoding : gzip" ?
+    > Le header est modifié et on peut voir l'ajout de "Content-Encoding: gzip" et "Accept-Ranges: bytes".
+    On note aussi que la taille du contenu est réduit. L'utilisation de gzip à compressé les données.
+    Il est nécessaire de décompression le contenu avec un algorithme de décompression, ici gzip.
+    (3).

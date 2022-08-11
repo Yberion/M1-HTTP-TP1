@@ -1,0 +1,1 @@
+Sur l'image (1), on voit bien que le protocole utilisé pour les données est TLS qui est le successeur de SSL.

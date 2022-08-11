@@ -1,0 +1,39 @@
+Client ---
+
+Quel est le rôle de la première ligne ?
+    > Dans le protocole HTTP, une méthode est une commande spécifiant un type de requête, c'est-à-dire qu'elle demande au serveur d'effectuer une action. En général l'action concerne une ressource identifiée par l'URL qui suit le nom de la méthode.
+    Dans l'illustration ci-contre, une requête GET est envoyée pour récupérer la page d'accueil.
+
+Décrivez le rôle des options : "Accept-Encoding:", "Accept:" et "Connection: keep-alive" ?
+    > Accept-Encoding : L'en-tête HTTP Accept-Encoding permet de définir quel sera l'encodage du contenu. Il s'agit généralement de l'algorithme de compression utilisé par le serveur. Le client peut alors décoder le corps de la requête correctement. Utilisant la négociation de contenu (content negotiation), le serveur choisit l'une des propositions d'encodage que le client supporte. Le serveur l'utilise et le notifie au client à l'aide de l'en-tête Content-Encoding de la réponse.
+
+    > Accept : Cet en-tête liste les types MIME de contenu acceptés par le client. Le caractère étoile * peut servir à spécifier tous les types / sous-types.
+    
+    > Connection: keep-alive : Les soucis majeurs des deux premières versions du protocole HTTP sont d'une part le nombre important de connexions lors du chargement d'une page complexe (contenant beaucoup d'images ou d'animations) et d'autre part le temps d'ouverture d'une connexion entre client et serveur (l'établissement d'une connexion TCP prend un temps triple de la latence entre client et serveur). Des expérimentations de connexions persistantes ont cependant été effectuées avec HTTP 1.0 (notamment par l'emploi de l'en-tête Connection: Keep-Alive), mais cela n'a été définitivement mis au point qu'avec HTTP 1.1.
+
+    Par défaut, HTTP 1.1 utilise des connexions persistantes, autrement dit la connexion n'est pas immédiatement fermée après une requête, mais reste disponible pour une nouvelle requête. On appelle souvent cette fonctionnalité keep-alive. Il est aussi permis à un client HTTP d'envoyer plusieurs requêtes sur la même connexion sans attendre les réponses. On appelle cette fonctionnalité pipelining. La persistance des connexions permet d'accélérer le chargement de pages contenant plusieurs ressources, tout en diminuant la charge du réseau.
+
+    La gestion de la persistance d'une connexion est gérée par l'en-tête Connection.
+
+Serveur ---
+
+Décrire la première ligne. A quoi sert le code de réponse ?
+    > Indique qu'on est sur une requête HTTP version 1.1 avec un code d'état.
+    En informatique, le code HTTP (aussi appelé code d'état) permet de déterminer le résultat d'une requête ou d'indiquer une erreur au client. Ce code numérique est destiné aux traitements automatiques par les logiciels de client HTTP. Ces codes d'état ont été définis par la RFC 2616, en même temps que d’autres codes d'état, non normalisés mais très utilisés sur le Web. Ils ont été ensuite étendus par la RFC 7231.
+    Le premier chiffre du code d'état est utilisé pour spécifier une des cinq catégories de réponse (informations, succès, redirection, erreur client et erreur serveur).
+
+Trouvez un site dont la réponse est 404 ou 403.
+    > https://github.com/Yberion_404
+    https://www.romainbrasier.fr/test
+
+
+En vous aidant de la spec décrivez les grandes étapes du protocole pour la récupération d'une page ?
+    > https://developer.mozilla.org/fr/docs/Web/HTTP/Session
+    
+    Dans les protocoles client-serveur, comme HTTP, les sessions se composent de trois phases :
+
+        - Le client établit une connexion TCP (ou la connexion appropriée si la couche de transport n'est pas TCP).
+        - Le client envoie sa requête et attend la réponse.
+        - Le serveur traite la requête, renvoyant sa réponse, fournissant un code d'état et des données appropriées.
+    
+    À partir de HTTP / 1.1, la connexion n'est plus fermée après avoir terminé la troisième phase, et le client peut à nouveau effectuer une requête : cela signifie que la deuxième et la troisième phases peuvent maintenant être effectuées à tout moment.

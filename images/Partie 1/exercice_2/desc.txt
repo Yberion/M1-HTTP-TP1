@@ -1,0 +1,10 @@
+1 & 2 ClientHandlerChar
+
+>Le texte de l'échange est-il lisible ?
+	Oui le texte est lisible
+
+>que se passe-t-il quand la taille du message dépasse la taille du buffer ?
+	Rien de spécial ?
+
+>la taille des segments TCP correspond-elle à la taille du buffer ?
+	Non il correspond à la taille du message
